@@ -9,7 +9,8 @@ SVG.Studioclock = function (size, options) {
 		mleds:    "#ff0000",
 		time:     "#ff0000",
         tshaddow: 0.10,
-        timeMode: 1
+        dshaddow: 0.15,
+        timeMode: 1 
 	}
 
 	if (typeof options === 'object') {
@@ -29,6 +30,7 @@ SVG.Studioclock = function (size, options) {
 		year: 0
 	}
     this.tick = 0;
+    this.round=false;
 
 	this.constructor.call(this, SVG.create('svg'));
 	this.viewbox(0, 0, 100, 100);
@@ -158,12 +160,13 @@ SVG.extend(SVG.Studioclock, {
         var s = this.time.s = t.getSeconds(); 
         var ms= this.time.ms = t.getMilliseconds();
         this.tick = s%2;
+        if (s === 0) this.round = !this.round;
         
-        for (var i=1; i<60; i++) {
+        for (var i=0; i<60; i++) {
             if (i > s) {
-                this.sdots[i].opacity(0.15);
+                this.sdots[i].opacity(this.round ? 1.0:this.settings.dshaddow);
             } else {
-                this.sdots[i].opacity(1.0);
+                this.sdots[i].opacity(this.round ? this.settings.dshaddow:1.0);
             }
         }
         var sp = this.tick ? ' ':':';
