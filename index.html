@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+	<title>iSystems Studio Clock</title>
+	<script type="text/javascript" src="res/js/svg.js"></script>
+	<script type="text/javascript" src="res/js/studioclock.js"></script>
+	<script type="text/javascript">
+        var draw,clock;
+		window.onload=function(){
+			draw = SVG('clock')
+            .size('100%', '100%')
+            .viewbox(0, 0, 100, 100)
+            .attr("preserveAspectRatio", "xMidYMax meet");
+			clock = draw.studioclock('100%',{sleds: '#0000ff', mleds: '#0000ff', time: '#0000ff'});
+            clock.start();
+		}
+	</script>
+    <link rel="stylesheet" type="text/css" href="res/css/studioclock.css">
+</head>
+<body>
+<div id="clock"></div>
+</body>
+</html>
