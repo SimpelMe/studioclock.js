@@ -54,10 +54,6 @@ table {
     src: url("../fonts/DSEG7Modern-Italic.woff") format('woff');
 }
 
-@font-face {
-    font-family: "D14MI";
-    src: url("../res/fonts/DSEG14Modern-Italic.woff") format('woff');
-}
 
 @font-face {
     font-family: "D7MBI";

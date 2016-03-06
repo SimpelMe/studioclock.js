@@ -173,7 +173,7 @@ SVG.extend(SVG.Studioclock, {
             this.dtime.text(("00" + h).slice(-2) + ':' + ("00" + m).slice(-2));
             this.stime.text(("00" + s).slice(-2));
         }
-        console.log(ms);
+        //console.log(ms);
         return this;
     }
 });
