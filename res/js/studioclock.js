@@ -9,7 +9,7 @@ SVG.Studioclock = function (size, options) {
 		mleds:    "#ff0000",
 		time:     "#ff0000",
         tshaddow: 0.10,
-        dshaddow: 0.15,
+        //dshaddow: 0.15, // alternate dots
         timeMode: 1 
 	}
 
@@ -30,7 +30,7 @@ SVG.Studioclock = function (size, options) {
 		year: 0
 	}
     this.tick = 0;
-    this.round=false;
+    //this.round=false; // alternate dots
 
 	this.constructor.call(this, SVG.create('svg'));
 	this.viewbox(0, 0, 100, 100);
@@ -160,13 +160,15 @@ SVG.extend(SVG.Studioclock, {
         var s = this.time.s = t.getSeconds(); 
         var ms= this.time.ms = t.getMilliseconds();
         this.tick = s%2;
-        if (s === 0) this.round = !this.round;
+        // if (s === 0) this.round = !this.round; // comment out to alternate seconds with filled or unfilled dots every minute
         
         for (var i=0; i<60; i++) {
             if (i > s) {
-                this.sdots[i].opacity(this.round ? 1.0:this.settings.dshaddow);
+                //this.sdots[i].opacity(this.round ? 1.0:this.settings.dshaddow); // alternate dots
+                this.sdots[i].opacity(0.15);
             } else {
-                this.sdots[i].opacity(this.round ? this.settings.dshaddow:1.0);
+                //this.sdots[i].opacity(this.round ? this.settings.dshaddow:1.0); // alternate dots
+                this.sdots[i].opacity(1.0);
             }
         }
         var sp = this.tick ? ' ':':';
